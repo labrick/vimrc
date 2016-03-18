@@ -16,4 +16,6 @@ nmap nt :NERDTree<CR>
 nmap tl :Tlist<CR>
 nmap vs :vsplite<CR>
 
+colors peaksea 
+
 
