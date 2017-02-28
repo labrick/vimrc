@@ -33,8 +33,12 @@ nmap nt :NERDTree<CR>
 nmap tl :Tlist<CR>
 nmap vs :vsplite<CR>
 nmap <F9> :call UpdateCtags()<CR>
+" %代表文件所有行，!xxx代表执行外部命令xxd，结合在一起就是把当前vim上显示的所有行传递给xxd，xxd把处理后的结果重新显示在vim上
+" 注意这里直接修改十六进制后，右侧对应的ascii码并不会改变，需要采用asc重新写回才行。
+nmap hex :%!xxd<CR>
+nmap asc :%!xxd -r<CR>
 " autocmd BufWritePost *.c,*.h,*.cpp call UpdateCtags()
 
-colors peaksea 
+" colors peaksea 
 
 
