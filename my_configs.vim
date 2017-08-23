@@ -41,4 +41,22 @@ nmap asc :%!xxd -r<CR>
 
 " colors peaksea 
 
+map <F9> :call CompileRunGcc()<CR>
+
+func! CompileRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!gcc % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!java %<"
+    elseif &filetype == 'sh'
+        exec "!chmod +x %"<CR>
+        :!./%
+    endif
+endfunc
 
