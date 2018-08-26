@@ -60,3 +60,21 @@ func! CompileRunGcc()
     endif
 endfunc
 
+nmap <S-w> b
+nmap <S-e> ge
+nmap <C-i> gf
+
+nmap <F4> :set mouse=i<CR>
+nmap <F4><F4> :set mouse=a<CR>
+nmap <F5> :set paste<CR>
+nmap <F5><F5> :set nopaste<CR>
+nmap <F6> :set scrollbind<CR>
+nmap <F6><F6> :set noscrollbind<CR>
+nmap <F7> :set expandtab<CR>
+nmap <F7><F7> :set noexpandtab<CR>
+
+set list
+set listchars=tab:>\ ,trail:.,extends:#,nbsp:.
+set colorcolumn=80
+set t_ti= t_te=
+
