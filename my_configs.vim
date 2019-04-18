@@ -19,7 +19,7 @@ function! UpdateCtags()
     execute ":cd " . curdir
 endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set autochdir
+" set autochdir
 
 "How can I open a NERDTree automatically when vim starts up if no files were specified?
 autocmd StdinReadPre * let s:std_in=1
@@ -38,6 +38,18 @@ nmap <F9> :call UpdateCtags()<CR>
 nmap hex :%!xxd<CR>
 nmap asc :%!xxd -r<CR>
 " autocmd BufWritePost *.c,*.h,*.cpp call UpdateCtags()
+" ---------------------
+nmap gb :Gblame<CR>
+nmap gs "Ggrep <C-R>=expand("<cword>")<CR><CR>
+
+" ---------------------
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+nmap mbt :TMiniBufExplorer<CR>
+nmap bn :bn<CR>
+nmap bp :bp<CR>
 
 " colors peaksea 
 
@@ -63,6 +75,7 @@ endfunc
 nmap <S-w> b
 nmap <S-e> ge
 nmap <C-i> gf
+nmap ff <C-z>
 
 nmap <F4> :set mouse=i<CR>
 nmap <F4><F4> :set mouse=a<CR>
@@ -76,5 +89,33 @@ nmap <F7><F7> :set noexpandtab<CR>
 set list
 set listchars=tab:>\ ,trail:.,extends:#,nbsp:.
 set colorcolumn=80
-set t_ti= t_te=
+" set t_ti= t_te=
 
+let MRU_Add_Menu = 1
+let MRU_Use_Current_Window = 1
+
+" -- Cscope setting --
+if has("cscope")
+    set csto=0      " cstag命令查找次序，0：先查找cscope数据库，1：先查找tags
+    set cst         " 同时搜索cscope数据库和tags
+    " set cscopequickfix=s-,c-,d-,i-,t-,e-  " 使用QuickFix窗口显示cscope结果
+    set nocsverb
+    if filereadable("cscope.out")
+        cs add cscope.out
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+
+nmap css :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap csg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap csc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap cst :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap cse :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap csf :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap csi :cs find i <C-R>=expand("<cword>")<CR><CR>
+nmap csd :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+nnoremap - :call bufferhint#Popup()<CR>
+nnoremap \ :call bufferhint#LoadPrevious()<CR>
