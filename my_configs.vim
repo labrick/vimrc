@@ -117,5 +117,29 @@ nmap csf :cs find f <C-R>=expand("<cword>")<CR><CR>
 nmap csi :cs find i <C-R>=expand("<cword>")<CR><CR>
 nmap csd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+function UpdateCscope()
+    let curdir=getcwd()
+    while !filereadable("./tags")
+        cd ..
+        if getcwd() == "/"
+            break
+        endif
+    endwhile
+    if filewritable("./tags")
+        !tag
+        TlistUpdate
+    endif
+    execute ":cd" . curdir
+endfunction
+
+function ReplaceCscope()
+    :cs kill 0
+    :cs add $CSCOPE_DB
+endfunction
+
+nmap <F9><F9> :call UpdateCscope()<CR>
+nmap <F9> :call ReplaceCscope()<CR>
+
+
 nnoremap - :call bufferhint#Popup()<CR>
 nnoremap \ :call bufferhint#LoadPrevious()<CR>
