@@ -1,7 +1,16 @@
 set nu
-
+set nowrap
 syntax on
 set tags=tags;
+set autochdir
+set splitright
+
+nmap vd: so $MYVIMRC<C>
+nmap ff <C-z>
+nmap zz :q<CR>
+nmap <S-w> b
+nmap <S-e> ge
+nmap <C-i> gf
 
 " 自动更新ctags文件
 function! UpdateCtags()
@@ -51,7 +60,30 @@ nmap mbt :TMiniBufExplorer<CR>
 nmap bn :bn<CR>
 nmap bp :bp<CR>
 
-" colors peaksea 
+" ctrlp config
+let g:ctrl_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+" search in PATH
+" nmap <leader>b :CtrlP
+" search in Buffer
+" nmap <leader>b :CtrlPBuffer
+" search in MRU files
+nmap <leader>f :CtrlPMRUFiles<CR>
+" search in Files, Buffers and MRU files at the same time
+nmap <leader>b :CtrlPMixed<CR>
+let g:ctrlp_woring_path_mode = 'ra'
+let g:ctrlp_user_caching = 1
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_max_height = 15
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_mruf_max= 500
+let g:ctrlp_follow_symlinks = 1
+" ttb: top to bottom, btt: bottom to top
+" let g:ctrlp_match_window = 'bottom,order:bbt,min:1,max:10,results:20'
+
+" colors peaksea
+" colors mayansmoke
+colors pyte
 
 map <F9> :call CompileRunGcc()<CR>
 
@@ -72,11 +104,6 @@ func! CompileRunGcc()
     endif
 endfunc
 
-nmap <S-w> b
-nmap <S-e> ge
-nmap <C-i> gf
-nmap ff <C-z>
-
 nmap <F4> :set mouse=i<CR>
 nmap <F4><F4> :set mouse=a<CR>
 nmap <F5> :set paste<CR>
@@ -88,7 +115,7 @@ nmap <F7><F7> :set noexpandtab<CR>
 
 set list
 set listchars=tab:>\ ,trail:.,extends:#,nbsp:.
-set colorcolumn=80
+" set colorcolumn=80
 " set t_ti= t_te=
 
 let MRU_Add_Menu = 1
@@ -116,6 +143,8 @@ nmap cse :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap csf :cs find f <C-R>=expand("<cword>")<CR><CR>
 nmap csi :cs find i <C-R>=expand("<cword>")<CR><CR>
 nmap csd :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap tt :cs find g 
+nmap ts :cs find s 
 
 function UpdateCscope()
     let curdir=getcwd()
@@ -139,7 +168,6 @@ endfunction
 
 nmap <F9><F9> :call UpdateCscope()<CR>
 nmap <F9> :call ReplaceCscope()<CR>
-
 
 nnoremap - :call bufferhint#Popup()<CR>
 nnoremap \ :call bufferhint#LoadPrevious()<CR>
