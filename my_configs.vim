@@ -4,29 +4,23 @@ syntax on
 set tags=tags;
 set autochdir
 set splitright
+set statusline+=%f
+set laststatus=2
+set ls=2
+set foldlevelstart=99
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab
 
 nmap vd: so $MYVIMRC<C>
-nmap ff <C-z>
+map ff <C-z>
 nmap zz :q<CR>
 nmap <S-w> b
 nmap <S-e> ge
 nmap <C-i> gf
+nmap cd :pwd
 
-" 自动更新ctags文件
-function! UpdateCtags()
-    let curdir=getcwd()
-    while !filereadable("./tags")
-        cd ..
-        if getcwd() == "/"
-            break
-        endif
-    endwhile
-    if filewritable("./tags")
-        !ctags -R --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q
-        TlistUpdate
-    endif
-    execute ":cd " . curdir
-endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set autochdir
 
@@ -41,7 +35,6 @@ nmap be :BufExplorer<CR>
 nmap nt :NERDTree<CR>
 nmap tl :Tlist<CR>
 nmap vs :vsplite<CR>
-nmap <F9> :call UpdateCtags()<CR>
 " %代表文件所有行，!xxx代表执行外部命令xxd，结合在一起就是把当前vim上显示的所有行传递给xxd，xxd把处理后的结果重新显示在vim上
 " 注意这里直接修改十六进制后，右侧对应的ascii码并不会改变，需要采用asc重新写回才行。
 nmap hex :%!xxd<CR>
@@ -50,6 +43,8 @@ nmap asc :%!xxd -r<CR>
 " ---------------------
 nmap gb :Gblame<CR>
 nmap gs "Ggrep <C-R>=expand("<cword>")<CR><CR>
+nmap <F8> @w<C-R>
+nmap <F11> :%s/
 
 " ---------------------
 let g:miniBufExplMapWindowNavVim = 1
@@ -81,28 +76,9 @@ let g:ctrlp_follow_symlinks = 1
 " ttb: top to bottom, btt: bottom to top
 " let g:ctrlp_match_window = 'bottom,order:bbt,min:1,max:10,results:20'
 
-" colors peaksea
+colors peaksea
 " colors mayansmoke
-colors pyte
-
-map <F9> :call CompileRunGcc()<CR>
-
-func! CompileRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!gcc % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'java'
-        exec "!javac %"
-        exec "!java %<"
-    elseif &filetype == 'sh'
-        exec "!chmod +x %"<CR>
-        :!./%
-    endif
-endfunc
+" colors pyte
 
 nmap <F4> :set mouse=i<CR>
 nmap <F4><F4> :set mouse=a<CR>
@@ -120,6 +96,7 @@ set listchars=tab:>\ ,trail:.,extends:#,nbsp:.
 
 let MRU_Add_Menu = 1
 let MRU_Use_Current_Window = 1
+let Tlist_Show_One_File = 1
 
 " -- Cscope setting --
 if has("cscope")
@@ -135,18 +112,19 @@ if has("cscope")
     set csverb
 endif
 
-nmap css :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap csg :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap csc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap cst :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap cse :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap csf :cs find f <C-R>=expand("<cword>")<CR><CR>
-nmap csi :cs find i <C-R>=expand("<cword>")<CR><CR>
-nmap csd :cs find d <C-R>=expand("<cword>")<CR><CR>
-nmap tt :cs find g 
-nmap ts :cs find s 
+nmap css :vs<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap csg :vs<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap csc :vs<CR>:cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap cst :vs<CR>:cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap cse :vs<CR>:cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap csf :vs<CR>:cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap csi :vs<CR>:cs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap csd :vs<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap tt :vs<CR>:cs find g 
+nmap ts :vs<CR>:cs find s 
+set csre
 
-function UpdateCscope()
+function! UpdateCscope()
     let curdir=getcwd()
     while !filereadable("./tags")
         cd ..
@@ -161,8 +139,8 @@ function UpdateCscope()
     execute ":cd" . curdir
 endfunction
 
-function ReplaceCscope()
-    :cs kill 0
+function! ReplaceCscope()
+    " :cs kill 0
     :cs add $CSCOPE_DB
 endfunction
 
