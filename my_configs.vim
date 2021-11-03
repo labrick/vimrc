@@ -8,10 +8,11 @@ set statusline+=%f
 set laststatus=2
 set ls=2
 set foldlevelstart=99
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8
-set noexpandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+" set cursorline
 
 nmap vd: so $MYVIMRC<C>
 map ff <C-z>
@@ -79,6 +80,8 @@ let g:ctrlp_follow_symlinks = 1
 colors peaksea
 " colors mayansmoke
 " colors pyte
+" set background=light     " dark
+" colorscheme solarized
 
 nmap <F4> :set mouse=i<CR>
 nmap <F4><F4> :set mouse=a<CR>
