@@ -8,10 +8,10 @@ set statusline+=%f
 set laststatus=2
 set ls=2
 set foldlevelstart=99
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
+:set noexpandtab
+:set tabstop=8
+:set softtabstop=8
+:set shiftwidth=8
 " set cursorline
 
 nmap vd: so $MYVIMRC<C>
@@ -55,6 +55,8 @@ let g:miniBufExplModSelTarget = 1
 nmap mbt :TMiniBufExplorer<CR>
 nmap bn :bn<CR>
 nmap bp :bp<CR>
+" nmap <leader>c gc
+" nmap <leader>u gcu
 
 " ctrlp config
 let g:ctrl_map = '<leader>p'
@@ -89,8 +91,20 @@ nmap <F5> :set paste<CR>
 nmap <F5><F5> :set nopaste<CR>
 nmap <F6> :set scrollbind<CR>
 nmap <F6><F6> :set noscrollbind<CR>
-nmap <F7> :set expandtab<CR>
-nmap <F7><F7> :set noexpandtab<CR>
+function! SetLinuxKernel()
+	:set noexpandtab
+	:set tabstop=8
+	:set softtabstop=8
+	:set shiftwidth=8
+endfunc
+function! SetLinuxUser()
+	:set expandtab
+	:set tabstop=4
+	:set softtabstop=4
+	:set shiftwidth=4
+endfunc
+nmap <F7> :call SetLinuxUser()<CR>
+nmap <F7><F7> :call SetLinuxKernel()<CR>
 
 set list
 set listchars=tab:>\ ,trail:.,extends:#,nbsp:.
@@ -152,3 +166,23 @@ nmap <F9> :call ReplaceCscope()<CR>
 
 nnoremap - :call bufferhint#Popup()<CR>
 nnoremap \ :call bufferhint#LoadPrevious()<CR>
+
+
+func! SetTetrasComment()
+    call setline(1, "/*")
+    call append(line("."), " * (C) Copyright 2021, Shenzhen Tetras.AI Technology Co., Ltd")
+    call append(line(".")+1, " *")
+    call append(line(".")+2, " * SPDX-License-Identifier: Apache-2.0")
+    call append(line(".")+3, " *")
+    call append(line(".")+4, " * Change Logs:")
+    call append(line(".")+5, " * Date           Author         Notes")
+    call append(line(".")+6, " * ".strftime("%Y-%m-%d")."     Martin      Initialize.")
+    call append(line(".")+7, " */")
+    call append(line(".")+8, "")
+    call append(line(".")+9, "/**")
+    call append(line(".")+10, " * @brief")
+    call append(line(".")+11, " * @date    ".strftime("%Y-%m-%d"))
+    call append(line(".")+12, " */")
+endfunc
+" tetras.ai comment for .c .h
+autocmd BufNewFile *.c,*.h exec ":call SetTetrasComment()"
