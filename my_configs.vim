@@ -84,7 +84,7 @@ colors peaksea
 " colors pyte
 " set background=light     " dark
 " colorscheme solarized
-
+set mouse=a
 nmap <F4> :set mouse=i<CR>
 nmap <F4><F4> :set mouse=a<CR>
 nmap <F5> :set paste<CR>
