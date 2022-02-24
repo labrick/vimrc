@@ -45,8 +45,6 @@ nmap asc :%!xxd -r<CR>
 nmap gb :Gblame<CR>
 nmap gs "Ggrep <C-R>=expand("<cword>")<CR><CR>
 nmap <F8> @w<C-R>
-nmap <F8><F8> qw<C-R>
-nmap <F11> :%s/
 
 " ---------------------
 let g:miniBufExplMapWindowNavVim = 1
