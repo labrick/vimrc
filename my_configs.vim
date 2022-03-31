@@ -44,7 +44,7 @@ nmap asc :%!xxd -r<CR>
 " ---------------------
 nmap gb :Gblame<CR>
 nmap gs "Ggrep <C-R>=expand("<cword>")<CR><CR>
-nmap <F8> @w<C-R>
+nmap <F6> @w<C-R>
 
 " ---------------------
 let g:miniBufExplMapWindowNavVim = 1
@@ -89,8 +89,8 @@ nmap <F4> :set mouse=i<CR>
 nmap <F4><F4> :set mouse=a<CR>
 nmap <F5> :set paste<CR>
 nmap <F5><F5> :set nopaste<CR>
-nmap <F6> :set scrollbind<CR>
-nmap <F6><F6> :set noscrollbind<CR>
+" nmap <F6> :set scrollbind<CR>
+" nmap <F6><F6> :set noscrollbind<CR>
 function! SetLinuxKernel()
 	:set noexpandtab
 	:set tabstop=8
