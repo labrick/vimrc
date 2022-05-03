@@ -8,10 +8,6 @@ set statusline+=%f
 set laststatus=2
 set ls=2
 set foldlevelstart=99
-:set noexpandtab
-:set tabstop=8
-:set softtabstop=8
-:set shiftwidth=8
 " set cursorline
 
 nmap vd: so $MYVIMRC<C>
@@ -103,6 +99,7 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
+:call SetLinuxUser()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
 
