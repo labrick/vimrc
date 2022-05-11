@@ -168,7 +168,7 @@ nnoremap \ :call bufferhint#LoadPrevious()<CR>
 
 func! SetTetrasComment()
     call setline(1, "/*")
-    call append(line("."), " * (C) Copyright 2021, Shenzhen Tetras.AI Technology Co., Ltd")
+    call append(line("."), " * (C) Copyright 2022, Shenzhen Tetras.AI Technology Co., Ltd")
     call append(line(".")+1, " *")
     call append(line(".")+2, " * SPDX-License-Identifier: Apache-2.0")
     call append(line(".")+3, " *")
