@@ -74,6 +74,12 @@ let g:ctrlp_follow_symlinks = 1
 " ttb: top to bottom, btt: bottom to top
 " let g:ctrlp_match_window = 'bottom,order:bbt,min:1,max:10,results:20'
 
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" let g:indentLine_char = '¦'
+" let g:indentLine_first_char = '|'
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_color_term = 239
+
 colors peaksea
 " colors mayansmoke
 " colors pyte
@@ -174,7 +180,7 @@ func! SetTetrasComment()
     call append(line(".")+3, " *")
     call append(line(".")+4, " * Change Logs:")
     call append(line(".")+5, " * Date           Author         Notes")
-    call append(line(".")+6, " * ".strftime("%Y-%m-%d")."     Martin      Initialize.")
+    call append(line(".")+6, " * ".strftime("%Y-%m-%d")."     Martin         Initialize.")
     call append(line(".")+7, " */")
     call append(line(".")+8, "")
     call append(line(".")+9, "/**")
