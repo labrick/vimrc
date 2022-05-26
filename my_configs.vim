@@ -17,6 +17,7 @@ nmap <S-w> b
 nmap <S-e> ge
 nmap <C-i> gf
 nmap cd :pwd
+nmap cc gcl
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set autochdir
@@ -105,8 +106,8 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
-" :call SetLinuxUser()
-:call SetLinuxKernel()
+:call SetLinuxUser()
+" :call SetLinuxKernel()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
 
