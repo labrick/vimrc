@@ -7,7 +7,6 @@ set splitright
 set statusline+=%f
 set laststatus=2
 set ls=2
-set foldlevelstart=99
 " set cursorline
 
 nmap vd: so $MYVIMRC<C>
@@ -18,6 +17,14 @@ nmap <S-e> ge
 nmap <C-i> gf
 nmap cd :pwd
 nmap cc gcl
+
+" flod
+set foldlevel=3
+set foldmethod=indent
+nmap <F2> zr
+nmap <F2><F2> zm
+nmap <F4> zo
+nmap <F4><F4> zc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set autochdir
@@ -87,9 +94,6 @@ colors peaksea
 " set background=light     " dark
 " colorscheme solarized
 set mouse=a
-nmap <F2> :!rtos.bd.sh<CR>
-nmap <F4> :set mouse=i<CR>
-nmap <F4><F4> :set mouse=a<CR>
 nmap <F5> :set paste<CR>
 nmap <F5><F5> :set nopaste<CR>
 " nmap <F6> :set scrollbind<CR>
