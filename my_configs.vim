@@ -18,14 +18,16 @@ nmap <C-i> gf
 nmap cd :pwd
 nmap cc gcl
 
-" flod
 " set foldlevel=3
 set foldlevelstart=99
 set foldmethod=indent
+" flod
 nmap <F2> zc
+" unfold
 " nmap <F2><F2> zo
+" flod all
 nmap <F8> zr
-" nmap <F4> zr
+" unflod all
 nmap <F8><F8> zm
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -112,8 +114,8 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
-" :call SetLinuxUser()
-:call SetLinuxKernel()
+:call SetLinuxUser()
+" :call SetLinuxKernel()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
 
