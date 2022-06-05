@@ -18,21 +18,12 @@ nmap <C-i> gf
 nmap cd :pwd
 nmap cc gcl
 
-" set foldlevel=3
-set foldlevelstart=99
-set foldmethod=indent
-" flod
-nmap <F2> zc
-" unfold
-" nmap <F2><F2> zo
-" flod all
-nmap <F8> zr
-" unflod all
-nmap <F8><F8> zm
+set foldcolumn=0
+nnoremap <silent><space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+set foldlevelstart=99       " 打开文件是默认不折叠代码
+set foldmethod=syntax
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set autochdir
-
 "How can I open a NERDTree automatically when vim starts up if no files were specified?
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -177,10 +168,6 @@ endfunction
 nmap <F9><F9> :call UpdateCscope()<CR>
 nmap <F9> :call ReplaceCscope()<CR>
 
-nnoremap - :call bufferhint#Popup()<CR>
-nnoremap \ :call bufferhint#LoadPrevious()<CR>
-
-
 func! SetTetrasComment()
     call setline(1, "/*")
     call append(line("."), " * (C) Copyright 2022, Shenzhen Tetras.AI Technology Co., Ltd")
@@ -199,3 +186,6 @@ func! SetTetrasComment()
 endfunc
 " tetras.ai comment for .c .h
 autocmd BufNewFile *.c,*.h exec ":call SetTetrasComment()"
+
+nnoremap - :call bufferhint#Popup()<CR>
+nnoremap \ :call bufferhint#LoadPrevious()<CR>
