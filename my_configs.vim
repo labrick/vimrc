@@ -21,7 +21,7 @@ nmap cc gcl
 set foldcolumn=0
 nnoremap <silent><space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 set foldlevelstart=99       " 打开文件是默认不折叠代码
-set foldmethod=syntax
+set foldmethod=indent
 
 " set autochdir
 "How can I open a NERDTree automatically when vim starts up if no files were specified?
