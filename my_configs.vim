@@ -78,10 +78,13 @@ let g:ctrlp_follow_symlinks = 1
 " let g:ctrlp_match_window = 'bottom,order:bbt,min:1,max:10,results:20'
 
 " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-" let g:indentLine_char = '¦'
+let g:indentLine_char = 'x'
 " let g:indentLine_first_char = '|'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_color_term = 239
+" indentLine 
+autocmd FileType json,markdown let g:indentLine_conceallevel = 0
+" let g:vim_json_syntax_conceal = 0
 
 colors peaksea
 " colors mayansmoke
