@@ -78,7 +78,7 @@ let g:ctrlp_follow_symlinks = 1
 " let g:ctrlp_match_window = 'bottom,order:bbt,min:1,max:10,results:20'
 
 " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_char = 'x'
+" let g:indentLine_char = 'x'
 " let g:indentLine_first_char = '|'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_color_term = 239
@@ -108,8 +108,8 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
-:call SetLinuxUser()
-" :call SetLinuxKernel()
+" :call SetLinuxUser()
+:call SetLinuxKernel()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
 
