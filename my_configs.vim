@@ -18,10 +18,13 @@ nmap <C-i> gf
 nmap cd :pwd
 nmap cc gcl
 
-set foldcolumn=0
+set foldcolumn=1
 nnoremap <silent><space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 set foldlevelstart=99       " 打开文件是默认不折叠代码
 set foldmethod=indent
+" nmap <F2> zm
+" nmap <F2><F2> zr
+" set foldlevel=5
 
 " set autochdir
 "How can I open a NERDTree automatically when vim starts up if no files were specified?
@@ -108,8 +111,8 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
-:call SetLinuxUser()
-" :call SetLinuxKernel()
+" :call SetLinuxUser()
+:call SetLinuxKernel()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
 
