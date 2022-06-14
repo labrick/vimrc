@@ -18,10 +18,11 @@ nmap <C-i> gf
 nmap cd :pwd
 nmap cc gcl
 
-set foldcolumn=1
-nnoremap <silent><space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+set foldenable
+set foldcolumn=0
 set foldlevelstart=99       " 打开文件是默认不折叠代码
 set foldmethod=indent
+nnoremap <silent><space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " nmap <F2> zm
 " nmap <F2><F2> zr
 " set foldlevel=5
@@ -111,8 +112,8 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
-" :call SetLinuxUser()
-:call SetLinuxKernel()
+:call SetLinuxUser()
+" :call SetLinuxKernel()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
 
