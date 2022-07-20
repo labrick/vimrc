@@ -100,6 +100,12 @@ nmap <F5> :set paste<CR>
 nmap <F5><F5> :set nopaste<CR>
 " nmap <F6> :set scrollbind<CR>
 " nmap <F6><F6> :set noscrollbind<CR>
+function! SetCPlusPlus()
+	:set expandtab
+	:set tabstop=2
+	:set softtabstop=2
+	:set shiftwidth=2
+endfunc
 function! SetLinuxKernel()
 	:set noexpandtab
 	:set tabstop=8
@@ -116,6 +122,7 @@ endfunc
 :call SetLinuxKernel()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
+nmap <F7><F7><F7> :call SetCPlusPlus()<CR>
 
 set list
 set listchars=tab:>\ ,trail:.,extends:#,nbsp:.
