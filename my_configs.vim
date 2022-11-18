@@ -118,9 +118,9 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
-" :call SetLinuxUser()
+:call SetLinuxUser()
 " :call SetLinuxKernel()
-:call SetCPlusPlus()
+" :call SetCPlusPlus()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
 nmap <F7><F7><F7> :call SetCPlusPlus()<CR>
