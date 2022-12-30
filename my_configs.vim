@@ -84,7 +84,7 @@ let g:ctrlp_follow_symlinks = 1
 " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " let g:indentLine_char = 'x'
 " let g:indentLine_first_char = '|'
-let g:indentLine_showFirstIndentLevel = 1
+" let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_color_term = 239
 " indentLine 
 autocmd FileType json,markdown let g:indentLine_conceallevel = 0
