@@ -118,8 +118,8 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
-" :call SetLinuxUser()
-:call SetLinuxKernel()
+:call SetLinuxUser()
+" :call SetLinuxKernel()
 " :call SetCPlusPlus()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
@@ -185,19 +185,20 @@ nmap <F9> :call ReplaceCscope()<CR>
 
 func! SetTetrasComment()
     call setline(1, "/*")
-    call append(line("."), " * (C) Copyright 2022, Shenzhen Tetras.AI Technology Co., Ltd")
-    call append(line(".")+1, " *")
-    call append(line(".")+2, " * SPDX-License-Identifier: Apache-2.0")
-    call append(line(".")+3, " *")
-    call append(line(".")+4, " * Change Logs:")
-    call append(line(".")+5, " * Date           Author         Notes")
-    call append(line(".")+6, " * ".strftime("%Y-%m-%d")."     Martin         Initialize.")
-    call append(line(".")+7, " */")
-    call append(line(".")+8, "")
-    call append(line(".")+9, "/**")
-    call append(line(".")+10, " * @brief")
-    call append(line(".")+11, " * @date    ".strftime("%Y-%m-%d"))
-    call append(line(".")+12, " */")
+    call append(line("."), " * (C) Copyright 2023, Shenzhen Tetras.AI Technology Co., Ltd")
+    call append(line(".")+1, " * This file is classified as confidential level C3 within Tetras.AI")
+    call append(line(".")+2, " *")
+    call append(line(".")+3, " * SPDX-License-Identifier: Apache-2.0")
+    call append(line(".")+4, " *")
+    call append(line(".")+5, " * Change Logs:")
+    call append(line(".")+6, " * Date           Author         Notes")
+    call append(line(".")+7, " * ".strftime("%Y-%m-%d")."     Martin         Initialize.")
+    call append(line(".")+8, " */")
+    call append(line(".")+9, "")
+    call append(line(".")+10, "/**")
+    call append(line(".")+11, " * @brief")
+    call append(line(".")+12, " * @date    ".strftime("%Y-%m-%d"))
+    call append(line(".")+13, " */")
 endfunc
 " tetras.ai comment for .c .h
 autocmd BufNewFile *.c,*.h exec ":call SetTetrasComment()"
