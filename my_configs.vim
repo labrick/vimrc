@@ -7,11 +7,6 @@ set splitright
 set statusline+=%f
 set laststatus=2
 set ls=2
-set foldlevelstart=99
-:set noexpandtab
-:set tabstop=8
-:set softtabstop=8
-:set shiftwidth=8
 " set cursorline
 
 nmap vd: so $MYVIMRC<C>
@@ -21,10 +16,18 @@ nmap <S-w> b
 nmap <S-e> ge
 nmap <C-i> gf
 nmap cd :pwd
+nmap cc gcl
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldenable
+set foldcolumn=0
+set foldlevelstart=99       " 打开文件是默认不折叠代码
+set foldmethod=indent
+nnoremap <silent><space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+" nmap <F2> zm
+" nmap <F2><F2> zr
+" set foldlevel=5
+
 " set autochdir
-
 "How can I open a NERDTree automatically when vim starts up if no files were specified?
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -44,7 +47,7 @@ nmap asc :%!xxd -r<CR>
 " ---------------------
 nmap gb :Gblame<CR>
 nmap gs "Ggrep <C-R>=expand("<cword>")<CR><CR>
-nmap <F8> @w<C-R>
+nmap <F6> @w<C-R>
 
 " ---------------------
 let g:miniBufExplMapWindowNavVim = 1
@@ -78,19 +81,31 @@ let g:ctrlp_follow_symlinks = 1
 " ttb: top to bottom, btt: bottom to top
 " let g:ctrlp_match_window = 'bottom,order:bbt,min:1,max:10,results:20'
 
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" let g:indentLine_char = 'x'
+" let g:indentLine_first_char = '|'
+" let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_color_term = 239
+" indentLine 
+autocmd FileType json,markdown let g:indentLine_conceallevel = 0
+" let g:vim_json_syntax_conceal = 0
+
 colors peaksea
 " colors mayansmoke
 " colors pyte
 " set background=light     " dark
 " colorscheme solarized
 set mouse=a
-nmap <F2> :!rtos.bd.sh<CR>
-nmap <F4> :set mouse=i<CR>
-nmap <F4><F4> :set mouse=a<CR>
 nmap <F5> :set paste<CR>
 nmap <F5><F5> :set nopaste<CR>
-nmap <F6> :set scrollbind<CR>
-nmap <F6><F6> :set noscrollbind<CR>
+" nmap <F6> :set scrollbind<CR>
+" nmap <F6><F6> :set noscrollbind<CR>
+function! SetCPlusPlus()
+	:set expandtab
+	:set tabstop=2
+	:set softtabstop=2
+	:set shiftwidth=2
+endfunc
 function! SetLinuxKernel()
 	:set noexpandtab
 	:set tabstop=8
@@ -103,8 +118,12 @@ function! SetLinuxUser()
 	:set softtabstop=4
 	:set shiftwidth=4
 endfunc
+:call SetLinuxUser()
+" :call SetLinuxKernel()
+" :call SetCPlusPlus()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
+nmap <F7><F7><F7> :call SetCPlusPlus()<CR>
 
 set list
 set listchars=tab:>\ ,trail:.,extends:#,nbsp:.
@@ -164,25 +183,25 @@ endfunction
 nmap <F9><F9> :call UpdateCscope()<CR>
 nmap <F9> :call ReplaceCscope()<CR>
 
-nnoremap - :call bufferhint#Popup()<CR>
-nnoremap \ :call bufferhint#LoadPrevious()<CR>
-
-
 func! SetTetrasComment()
     call setline(1, "/*")
-    call append(line("."), " * (C) Copyright 2021, Shenzhen Tetras.AI Technology Co., Ltd")
-    call append(line(".")+1, " *")
-    call append(line(".")+2, " * SPDX-License-Identifier: Apache-2.0")
-    call append(line(".")+3, " *")
-    call append(line(".")+4, " * Change Logs:")
-    call append(line(".")+5, " * Date           Author         Notes")
-    call append(line(".")+6, " * ".strftime("%Y-%m-%d")."     Martin      Initialize.")
-    call append(line(".")+7, " */")
-    call append(line(".")+8, "")
-    call append(line(".")+9, "/**")
-    call append(line(".")+10, " * @brief")
-    call append(line(".")+11, " * @date    ".strftime("%Y-%m-%d"))
-    call append(line(".")+12, " */")
+    call append(line("."), " * (C) Copyright 2023, Shenzhen Tetras.AI Technology Co., Ltd")
+    call append(line(".")+1, " * This file is classified as confidential level C3 within Tetras.AI")
+    call append(line(".")+2, " *")
+    call append(line(".")+3, " * SPDX-License-Identifier: Apache-2.0")
+    call append(line(".")+4, " *")
+    call append(line(".")+5, " * Change Logs:")
+    call append(line(".")+6, " * Date           Author         Notes")
+    call append(line(".")+7, " * ".strftime("%Y-%m-%d")."     Martin         Initialize.")
+    call append(line(".")+8, " */")
+    call append(line(".")+9, "")
+    call append(line(".")+10, "/**")
+    call append(line(".")+11, " * @brief")
+    call append(line(".")+12, " * @date    ".strftime("%Y-%m-%d"))
+    call append(line(".")+13, " */")
 endfunc
 " tetras.ai comment for .c .h
 autocmd BufNewFile *.c,*.h exec ":call SetTetrasComment()"
+
+nnoremap - :call bufferhint#Popup()<CR>
+nnoremap \ :call bufferhint#LoadPrevious()<CR>
