@@ -17,6 +17,7 @@ nmap <S-e> ge
 nmap <C-i> gf
 nmap cd :pwd
 nmap cc gcl
+nmap sf :set ff?<CR>
 
 set foldenable
 set foldcolumn=0
