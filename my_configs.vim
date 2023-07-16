@@ -9,15 +9,10 @@ set laststatus=2
 set ls=2
 " set cursorline
 
-nmap vd: so $MYVIMRC<C>
-map ff <C-z>
+nmap ff <C-z>
 nmap zz :q<CR>
-nmap <S-w> b
-nmap <S-e> ge
-nmap <C-i> gf
-nmap cd :pwd
-nmap cc gcl
 nmap sf :set ff?<CR>
+nmap cc :%s/\s\+$//CR>
 
 set foldenable
 set foldcolumn=0
