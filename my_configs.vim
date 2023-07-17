@@ -11,6 +11,7 @@ set ls=2
 
 nmap ff <C-z>
 nmap zz :q<CR>
+nmap <S-w> b
 nmap sf :set ff?<CR>
 nmap cc :%s/\s\+$//CR>
 
