@@ -197,7 +197,7 @@ func! SetTetrasComment()
     call append(line(".")+13, " */")
 endfunc
 " tetras.ai comment for .c .h
-autocmd BufNewFile *.c,*.h exec ":call SetTetrasComment()"
+autocmd BufNewFile *.c,*.h,*.cpp,*hpp exec ":call SetTetrasComment()"
 
 nnoremap - :call bufferhint#Popup()<CR>
 nnoremap \ :call bufferhint#LoadPrevious()<CR>
