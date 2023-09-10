@@ -179,22 +179,23 @@ endfunction
 nmap <F9><F9> :call UpdateCscope()<CR>
 nmap <F9> :call ReplaceCscope()<CR>
 
+" call append(line(".")+2, " *")
+" call append(line(".")+3, " * SPDX-License-Identifier: Apache-2.0")
+
 func! SetTetrasComment()
     call setline(1, "/*")
     call append(line("."), " * (C) Copyright 2023, Shenzhen Tetras.AI Technology Co., Ltd")
     call append(line(".")+1, " * This file is classified as confidential level C2 within Tetras.AI")
-    " call append(line(".")+2, " *")
-    " call append(line(".")+3, " * SPDX-License-Identifier: Apache-2.0")
-    call append(line(".")+4, " *")
-    call append(line(".")+5, " * Change Logs:")
-    call append(line(".")+6, " * Date           Author         Notes")
-    call append(line(".")+7, " * ".strftime("%Y-%m-%d")."     Martin         Initialize.")
-    call append(line(".")+8, " */")
-    call append(line(".")+9, "")
-    call append(line(".")+10, "/**")
-    call append(line(".")+11, " * @brief")
-    call append(line(".")+12, " * @date    ".strftime("%Y-%m-%d"))
-    call append(line(".")+13, " */")
+    call append(line(".")+2, " *")
+    call append(line(".")+3, " * Change Logs:")
+    call append(line(".")+4, " * Date           Author         Notes")
+    call append(line(".")+5, " * ".strftime("%Y-%m-%d")."     Martin         Initialize.")
+    call append(line(".")+6, " */")
+    call append(line(".")+7, "")
+    call append(line(".")+8, "/**")
+    call append(line(".")+9, " * @brief")
+    call append(line(".")+10, " * @date    ".strftime("%Y-%m-%d"))
+    call append(line(".")+11, " */")
 endfunc
 " tetras.ai comment for .c .h
 autocmd BufNewFile *.c,*.h,*.cpp,*hpp exec ":call SetTetrasComment()"
