@@ -7,6 +7,8 @@ set splitright
 set statusline+=%f
 set laststatus=2
 set ls=2
+nmap <F8> :set autochdir<CR>
+nmap <F8><F8> :unset autochdir<CR>
 " set cursorline
 
 nmap ff <C-z>
