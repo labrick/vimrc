@@ -89,6 +89,7 @@ autocmd FileType json,markdown let g:indentLine_conceallevel = 0
 " let g:vim_json_syntax_conceal = 0
 
 colors peaksea
+" colors tokyonight
 " colors mayansmoke
 " colors pyte
 " set background=light     " dark
