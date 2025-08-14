@@ -187,8 +187,8 @@ nmap <F9> :call ReplaceCscope()<CR>
 
 func! SetTetrasComment()
     call setline(1, "/*")
-    call append(line("."), " * (C) Copyright 2024, Imvision Co., Ltd")
-    call append(line(".")+1, " * This file is classified as confidential level C2 within Imvision")
+    call append(line("."), " * (C) Copyright 2025, Imvision Co., Ltd")
+    call append(line(".")+1, " * This file is classified as confidential level C3 within Imvision")
     call append(line(".")+2, " *")
     call append(line(".")+3, " * Change Logs:")
     call append(line(".")+4, " * Date           Author         Notes")
