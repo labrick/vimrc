@@ -119,7 +119,7 @@ function! SetLinuxUser()
 endfunc
 " :call SetLinuxUser()
 " :call SetLinuxKernel()
-:call SetCPlusPlus()
+:call SetLinuxKernel()
 nmap <F7> :call SetLinuxUser()<CR>
 nmap <F7><F7> :call SetLinuxKernel()<CR>
 nmap <F7><F7><F7> :call SetCPlusPlus()<CR>
